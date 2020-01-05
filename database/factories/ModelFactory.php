@@ -11,9 +11,23 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-    ];
-});
+    use App\Status;
+    use App\Task;
+    use Faker\Generator;
+
+    $factory->define(Task::class, function (Faker\Generator $faker) {
+        return [
+            'title' => $faker->sentence,
+            'description' => $faker->paragraph,
+            'status_id' => function () {
+                return factory(Status::class)->create()->id;
+            },
+        ];
+    });
+
+    $factory->define(Status::class, function (Faker\Generator $faker) {
+        return [
+            'name' => $faker->name,
+            'color' => '#333',
+        ];
+    });
