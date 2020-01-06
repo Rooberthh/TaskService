@@ -19,6 +19,15 @@
             'description'
         ];
 
+        protected static function boot()
+        {
+            parent::boot();
+
+            Task::deleting(function($task){
+                $task->objectives->each->delete();
+            });
+        }
+
         public function status()
         {
             return $this->belongsTo(Status::class);
