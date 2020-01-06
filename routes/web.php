@@ -18,8 +18,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('tasks/{id}',  ['uses' => 'TasksController@destroy']);
 
     $router->get('statuses',  ['uses' => 'StatusesController@index']);
-    $router->patch('statuses/{id}',  ['uses' => 'StatusesController@update']);
     $router->post('statuses',  ['uses' => 'StatusesController@store']);
+    $router->patch('statuses/{id}',  ['uses' => 'StatusesController@update']);
     $router->delete('statuses/{id}',  ['uses' => 'StatusesController@destroy']);
 
     $router->post('tasks/{task}/objectives',  ['uses' => 'TaskObjectivesController@store']);
