@@ -11,6 +11,7 @@
 |
 */
 
+    use App\Objective;
     use App\Status;
     use App\Task;
     use Faker\Generator;
@@ -29,5 +30,15 @@
         return [
             'name' => $faker->name,
             'color' => '#333',
+        ];
+    });
+
+    $factory->define(Objective::class, function (Faker\Generator $faker) {
+        return [
+            'task_id' => function () {
+                return factory(Task::class)->create()->id;
+            },
+            'body' => $faker->paragraph,
+            'completed' => false
         ];
     });

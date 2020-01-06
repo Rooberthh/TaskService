@@ -20,4 +20,10 @@
         {
             return $this->belongsTo(Status::class);
         }
+
+        public function objectives()
+        {
+            return $this->hasMany(Objective::class);
+        }
+
     }
