@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use App\Objective;
     use App\Task;
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
@@ -26,15 +27,17 @@
         }
 
         /**
-         * @param $id
+         * @param $task
+         * @param $objective
          * @return Response|\Laravel\Lumen\Http\ResponseFactory
          */
-        public function destroy($id)
+        public function destroy($task, $objective)
         {
-            $task = Task::find($id);
-            $task->delete();
+            $objective = Objective::find($objective);
 
-            return response('Task have been deleted', 200);
+            $objective->delete();
+
+            return response('Objective have been deleted', 200);
         }
 
     }

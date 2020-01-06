@@ -17,4 +17,15 @@
 
             $this->seeInDatabase('objectives', ['body' => 'new objective']);
         }
+
+        /** @test */
+        function an_objective_can_be_deleted()
+        {
+            $objective = create('App\Objective', ['body' => 'deleted objective']);
+
+            $this->json('delete', $objective->path())
+                ->assertResponseStatus(200);
+
+            $this->notseeInDatabase('objectives', ['body' => 'deleted objective']);
+        }
     }
