@@ -32,4 +32,16 @@
             return response($task, 200);
         }
 
+        /**
+         * @param $id
+         * @return Response|\Laravel\Lumen\Http\ResponseFactory
+         */
+        public function destroy($id)
+        {
+            $task = Task::find($id);
+            $task->delete();
+
+            return response('Task have been deleted', 200);
+        }
+
     }

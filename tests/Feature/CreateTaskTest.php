@@ -17,4 +17,15 @@
 
             $this->seeInDatabase('tasks', $task->toArray());
         }
+
+        /** @test */
+        function a_user_can_delete_a_task()
+        {
+            $task = create('App\Task');
+
+            $this->json('delete', "api/tasks/$task->id")
+                ->assertResponseStatus(200);
+
+            $this->notSeeInDatabase('tasks', $task->toArray());
+        }
     }
