@@ -21,4 +21,9 @@
         {
             return $this->hasMany(Task::class);
         }
+
+        public function path()
+        {
+            return "api/statuses/$this->id";
+        }
     }
