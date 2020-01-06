@@ -28,4 +28,18 @@
 
             $this->notseeInDatabase('objectives', ['body' => 'deleted objective']);
         }
+
+        /** @test */
+        function an_objective_can_be_updated()
+        {
+            $objective = create('App\Objective');
+
+            $this->json('patch', $objective->path(), ['body' => 'updated', 'completed' => true])
+                ->assertResponseStatus(201);
+
+            $this->seeInDatabase('objectives', [
+                'body' => 'updated',
+                'completed' => true
+            ]);
+        }
     }

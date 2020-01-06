@@ -26,6 +26,23 @@
             return $task->addObjective($request->get('body'));
         }
 
+        public function update($task, $objective, Request $request)
+        {
+            $this->validate($request, [
+                'body' => 'required'
+            ]);
+
+            $objective = Objective::find($objective);
+
+            $objective->update([
+                'body' => $request->get('body')
+            ]);
+
+            $request->get('completed') ? $objective->complete() : $objective->incomplete();
+
+            return response($objective, 201);
+        }
+
         /**
          * @param $task
          * @param $objective
