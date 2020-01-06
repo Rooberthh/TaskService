@@ -17,6 +17,15 @@
             'color'
         ];
 
+        protected static function boot()
+        {
+            parent::boot();
+
+            Status::deleting(function($status){
+                $status->tasks->each->delete();
+            });
+        }
+
         public function tasks()
         {
             return $this->hasMany(Task::class);
