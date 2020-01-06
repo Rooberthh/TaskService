@@ -26,4 +26,8 @@
             return $this->hasMany(Objective::class);
         }
 
+        public function addObjective($body)
+        {
+            return $this->objectives()->create(compact('body'));
+        }
     }

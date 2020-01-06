@@ -16,11 +16,12 @@
         }
 
         /** @test */
-        function it_can_have_objectives ()
+        function it_can_have_objectives()
         {
             $task = create('App\Task');
-            $objective = create('App\Objective', ['task_id' => $task->id]);
+            $objective = $task->addObjective('New objective');
 
-            $this->assertTrue($task->objectives->contains($objective));
+            $this->assertCount(1, $task->objectives);
+            $this->assertTrue($task->fresh()->objectives->contains($objective));
         }
     }

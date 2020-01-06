@@ -16,9 +16,18 @@
             'completed' => 'boolean'
         ];
 
-        function task()
+        public function task()
         {
             return $this->belongsTo(Task::class);
         }
 
+        public function complete()
+        {
+            return $this->update(['completed' => true]);
+        }
+
+        public function incomplete()
+        {
+            return $this->update(['completed' => false]);
+        }
     }
