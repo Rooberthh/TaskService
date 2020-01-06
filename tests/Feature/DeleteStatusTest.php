@@ -13,7 +13,7 @@
         {
             $status = create('App\Status');
 
-            $this->json('delete', $status->path(), $status->id)
+            $this->json('delete', $status->path())
                 ->assertResponseStatus(200);
 
             $this->notSeeInDatabase('statuses', $status->toArray());

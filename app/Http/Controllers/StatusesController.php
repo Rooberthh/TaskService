@@ -60,4 +60,12 @@
             return response($status, 200);
         }
 
+        public function destroy($id)
+        {
+            $status = Status::find($id);
+            $status->delete();
+
+            return response('Status deleted', 200);
+        }
+
     }
