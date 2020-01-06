@@ -13,4 +13,5 @@
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('tasks',  ['uses' => 'TasksController@index']);
+    $router->post('tasks',  ['uses' => 'TasksController@store']);
 });
