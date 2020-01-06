@@ -16,6 +16,10 @@
             'completed' => 'boolean'
         ];
 
+        protected $with = [
+            'task'
+        ];
+
         public function task()
         {
             return $this->belongsTo(Task::class);
@@ -29,5 +33,10 @@
         public function incomplete()
         {
             return $this->update(['completed' => false]);
+        }
+
+        public function path()
+        {
+            return $this->task->path() . "/objectives/$this->id";
         }
     }
