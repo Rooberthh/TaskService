@@ -14,5 +14,6 @@
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('tasks',  ['uses' => 'TasksController@index']);
     $router->post('tasks',  ['uses' => 'TasksController@store']);
+    $router->patch('tasks/{id}',  ['uses' => 'TasksController@update']);
     $router->delete('tasks/{id}',  ['uses' => 'TasksController@destroy']);
 });

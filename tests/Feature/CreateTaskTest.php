@@ -23,7 +23,7 @@
         {
             $task = create('App\Task');
 
-            $this->json('delete', "api/tasks/$task->id")
+            $this->json('delete', $task->path())
                 ->assertResponseStatus(200);
 
             $this->notSeeInDatabase('tasks', $task->toArray());

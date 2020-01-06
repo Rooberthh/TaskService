@@ -33,4 +33,9 @@
         {
             return $this->objectives()->create(compact('body'));
         }
+
+        public function path()
+        {
+            return "/api/tasks/$this->id";
+        }
     }

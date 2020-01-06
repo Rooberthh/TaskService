@@ -32,6 +32,23 @@
             return response($task, 200);
         }
 
+        public function update($id, Request $request)
+        {
+            $this->validate($request, [
+                'title' => 'sometimes',
+                'description' => 'sometimes'
+            ]);
+
+            $task = Task::find($id);
+
+            $task->update([
+                'title' => $request->get('title'),
+                'description' => $request->get('description')
+            ]);
+
+            return response($task, 200);
+        }
+
         /**
          * @param $id
          * @return Response|\Laravel\Lumen\Http\ResponseFactory
