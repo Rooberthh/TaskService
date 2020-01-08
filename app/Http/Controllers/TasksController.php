@@ -5,6 +5,7 @@
     use App\Task;
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
+    use Illuminate\Validation\Rule;
 
     class TasksController extends Controller
     {
@@ -21,7 +22,7 @@
         public function store(Request $request)
         {
             $this->validate($request, [
-                'title' => 'required'
+                'title' => ['required', Rule::unique('tasks')]
             ]);
 
             $task = Task::create([

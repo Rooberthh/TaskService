@@ -20,6 +20,18 @@
         }
 
         /** @test */
+        function a_task_title_must_be_unique()
+        {
+            create('App\Task', ['title' => 'created', 'status_id' => 0]);
+            $task = make('App\Task', ['status_id' => 0, 'title' => 'created']);
+
+            $response = $this->json('post', 'api/tasks', $task->toArray());
+
+            $this->assertEquals(422, $response->response->getStatusCode());
+            $this->notSeeInDatabase('tasks', $task->toArray());
+        }
+
+        /** @test */
         function a_user_can_delete_a_task()
         {
             $task = create('App\Task');
