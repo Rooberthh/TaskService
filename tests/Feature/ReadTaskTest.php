@@ -10,10 +10,15 @@
         /** @test */
         function a_user_can_fetch_tasks ()
         {
-            $task = create('App\Task');
+            create('App\Task');
 
             $this->json('get', 'api/tasks')
-                ->seeJsonContains($task->toArray())
+                ->seeJsonStructure([
+                    '*' => [
+                        'title',
+                        'status_id'
+                    ]
+                ])
                 ->assertResponseStatus(200);
         }
     }
