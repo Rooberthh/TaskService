@@ -28,7 +28,7 @@
 
     $factory->define(Status::class, function (Faker\Generator $faker) {
         return [
-            'name' => $faker->name,
+            'name' => $faker->word,
             'color' => '#333',
         ];
     });
