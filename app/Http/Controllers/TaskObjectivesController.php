@@ -9,6 +9,14 @@
 
     class TaskObjectivesController extends Controller
     {
+
+        public function index($id)
+        {
+            $task = Task::find($id);
+
+            return $task->objectives;
+        }
+
         /**
          * @param $task
          * @param Request $request

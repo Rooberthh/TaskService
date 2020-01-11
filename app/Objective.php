@@ -9,12 +9,23 @@
     class Objective extends Model
     {
         protected $fillable = [
-            'body', 'completed'
+            'body',
+            'completed'
         ];
 
         protected $casts = [
             'completed' => 'boolean'
         ];
+
+        protected static function boot()
+        {
+            parent::boot();
+
+            // auto-sets values on creation
+            static::creating(function ($query) {
+                $query->completed = $query->completed ?? false;
+            });
+        }
 
         public function task()
         {
