@@ -16,10 +16,6 @@
             'completed' => 'boolean'
         ];
 
-        protected $with = [
-            'task'
-        ];
-
         public function task()
         {
             return $this->belongsTo(Task::class);

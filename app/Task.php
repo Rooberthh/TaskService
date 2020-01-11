@@ -20,6 +20,10 @@
             'status_id'
         ];
 
+        protected $with = [
+            'objectives'
+        ];
+
         protected static function boot()
         {
             parent::boot();

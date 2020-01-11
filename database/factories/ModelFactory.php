@@ -37,7 +37,7 @@
             'description'  => $faker->paragraph,
         ];
     });
-    
+
     $factory->define(Status::class, function (Faker\Generator $faker) {
         return [
             'name' => $faker->word,
