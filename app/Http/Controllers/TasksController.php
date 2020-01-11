@@ -22,12 +22,14 @@
         public function store(Request $request)
         {
             $this->validate($request, [
-                'title' => ['required', Rule::unique('tasks')]
+                'title' => ['required', Rule::unique('tasks')],
+                'status_id' => 'sometimes'
             ]);
 
             $task = Task::create([
                 'title' => $request->get('title'),
-                'description' => $request->get('description')
+                'description' => $request->get('description'),
+                'status_id' => $request->get('status_id')
             ]);
 
             return response($task, 200);

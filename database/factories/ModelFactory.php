@@ -26,6 +26,18 @@
         ];
     });
 
+    $factory->state(Task::class, 'from_existing_statuses', function ($faker) {
+        $title = $faker->sentence;
+
+        return [
+            'status_id' => function () {
+                return Status::all()->random()->id;
+            },
+            'title' => $title,
+            'description'  => $faker->paragraph,
+        ];
+    });
+    
     $factory->define(Status::class, function (Faker\Generator $faker) {
         return [
             'name' => $faker->word,
