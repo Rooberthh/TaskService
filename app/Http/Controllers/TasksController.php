@@ -37,14 +37,16 @@
         {
             $this->validate($request, [
                 'title' => 'sometimes',
-                'description' => 'sometimes'
+                'description' => 'sometimes',
+                'status_id' => 'sometimes'
             ]);
 
             $task = Task::find($id);
 
             $task->update([
                 'title' => $request->get('title'),
-                'description' => $request->get('description')
+                'description' => $request->get('description'),
+                'status_id' => $request->get('status_id')
             ]);
 
             return response($task, 200);

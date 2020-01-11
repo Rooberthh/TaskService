@@ -16,7 +16,8 @@
          */
         protected $fillable = [
             'title',
-            'description'
+            'description',
+            'status_id'
         ];
 
         protected static function boot()
