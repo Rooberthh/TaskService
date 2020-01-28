@@ -17,10 +17,15 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->patch('tasks/{id}',  ['uses' => 'TasksController@update']);
     $router->delete('tasks/{id}',  ['uses' => 'TasksController@destroy']);
 
-    $router->get('statuses',  ['uses' => 'StatusesController@index']);
-    $router->post('statuses',  ['uses' => 'StatusesController@store']);
-    $router->patch('statuses/{id}',  ['uses' => 'StatusesController@update']);
-    $router->delete('statuses/{id}',  ['uses' => 'StatusesController@destroy']);
+    $router->get('boards',  ['uses' => 'BoardsController@index']);
+    $router->post('boards',  ['uses' => 'BoardsController@store']);
+    $router->patch('boards/{id}',  ['uses' => 'BoardsController@update']);
+    $router->delete('boards/{id}',  ['uses' => 'BoardsController@destroy']);
+
+    $router->get('boards/{board}/statuses',  ['uses' => 'StatusesController@index']);
+    $router->post('boards/{board}/statuses',  ['uses' => 'StatusesController@store']);
+    $router->patch('boards/{board}/statuses/{id}',  ['uses' => 'StatusesController@update']);
+    $router->delete('boards/{board}/statuses/{id}',  ['uses' => 'StatusesController@destroy']);
 
     $router->get('statuses/{id}/tasks',  ['uses' => 'StatusTasksController@index']);
 

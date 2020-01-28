@@ -18,11 +18,12 @@
         }
 
         /**
+         * @param $board
          * @param Request $request
          * @return Response|ResponseFactory
          * @throws ValidationException
          */
-        public function store(Request $request)
+        public function store($board, Request $request)
         {
             $this->validate($request, [
                 'name' => 'required',
@@ -31,7 +32,8 @@
 
             $status = Status::create([
                 'name' => $request->get('name'),
-                'color' => $request->get('color')
+                'color' => $request->get('color'),
+                'board_id' => $board
             ]);
 
             return response($status, 200);
@@ -60,9 +62,10 @@
             return response($status, 200);
         }
 
-        public function destroy($id)
+        public function destroy($board, $id)
         {
             $status = Status::find($id);
+
             $status->delete();
 
             return response('Status deleted', 200);

@@ -10,9 +10,11 @@
         /** @test */
         function a_user_can_create_a_status ()
         {
-            $status = make('App\Status');
+            $board = create('App\Board');
 
-            $this->json('post', 'api/statuses', $status->toArray())
+            $status = make('App\Status', ['board_id' => $board->id]);
+
+            $this->json('post', $board->path() . '/statuses', $status->toArray())
                 ->assertResponseStatus(200);
 
             $this->seeInDatabase('statuses', $status->toArray());

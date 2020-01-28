@@ -16,7 +16,8 @@
             $this->json('delete', $status->path())
                 ->assertResponseStatus(200);
 
-            $this->notSeeInDatabase('statuses', $status->toArray());
+            $this->assertCount(0, Status::all());
+
         }
 
         /** @test */

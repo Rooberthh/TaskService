@@ -14,7 +14,8 @@
          */
         protected $fillable = [
             'name',
-            'color'
+            'color',
+            'board_id'
         ];
 
         protected $with = [
@@ -30,6 +31,11 @@
             });
         }
 
+        public function board()
+        {
+            return $this->belongsTo(Board::class);
+        }
+
         public function tasks()
         {
             return $this->hasMany(Task::class);
@@ -37,6 +43,6 @@
 
         public function path()
         {
-            return "api/statuses/$this->id";
+            return "api/boards/{$this->board->id}/statuses/$this->id";
         }
     }

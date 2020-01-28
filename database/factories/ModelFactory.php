@@ -11,6 +11,7 @@
 |
 */
 
+    use App\Board;
     use App\Objective;
     use App\Status;
     use App\Task;
@@ -38,9 +39,18 @@
         ];
     });
 
+    $factory->define(Board::class, function (Faker\Generator $faker) {
+        return [
+            'name' => $faker->word,
+        ];
+    });
+
     $factory->define(Status::class, function (Faker\Generator $faker) {
         return [
             'name' => $faker->word,
+            'board_id' => function() {
+                return factory(Board::class)->create()->id;
+            },
             'color' => '#333',
         ];
     });

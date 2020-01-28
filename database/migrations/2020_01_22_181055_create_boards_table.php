@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatusesTable extends Migration
+class CreateBoardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('statuses', function (Blueprint $table) {
+        Schema::create('boards', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('board_id');
             $table->string('name');
-            $table->string('color')->default('#000000');
+            $table->boolean('archived')->default(false);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statuses');
+        Schema::dropIfExists('boards');
     }
 }
