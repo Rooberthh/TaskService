@@ -27,8 +27,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->patch('boards/{board}/statuses/{id}',  ['uses' => 'StatusesController@update']);
     $router->delete('boards/{board}/statuses/{id}',  ['uses' => 'StatusesController@destroy']);
 
-    $router->get('statuses/{id}/tasks',  ['uses' => 'StatusTasksController@index']);
-
     $router->get('tasks/{task}/objectives',  ['uses' => 'TaskObjectivesController@index']);
     $router->post('tasks/{task}/objectives',  ['uses' => 'TaskObjectivesController@store']);
     $router->patch('tasks/{task}/objectives/{objective}',  ['uses' => 'TaskObjectivesController@update']);
