@@ -14,7 +14,7 @@
 
             $this->json('patch', $task->path(), [
                 'title' => 'is changed',
-                'status_id' => $task->status_id
+                'status_id' => $task->status->id
                 ])
                 ->assertResponseStatus(200);
 

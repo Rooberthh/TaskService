@@ -19,7 +19,7 @@
          * @return Response|\Laravel\Lumen\Http\ResponseFactory
          * @throws \Illuminate\Validation\ValidationException
          */
-        public function store(Request $request)
+        public function store($board, $status, Request $request)
         {
             $this->validate($request, [
                 'title' => ['required', Rule::unique('tasks')],
@@ -35,7 +35,7 @@
             return response($task, 200);
         }
 
-        public function update($id, Request $request)
+        public function update($board, $status, $id, Request $request)
         {
             $this->validate($request, [
                 'title' => 'sometimes',
@@ -58,7 +58,7 @@
          * @param $id
          * @return Response|\Laravel\Lumen\Http\ResponseFactory
          */
-        public function destroy($id)
+        public function destroy($board, $status, $id)
         {
             $task = Task::find($id);
             $task->delete();
