@@ -15,15 +15,16 @@
         }
 
         /**
+         * @param $status
          * @param Request $request
          * @return Response|\Laravel\Lumen\Http\ResponseFactory
          * @throws \Illuminate\Validation\ValidationException
          */
-        public function store($board, $status, Request $request)
+        public function store(Request $request)
         {
             $this->validate($request, [
                 'title' => ['required', Rule::unique('tasks')],
-                'status_id' => 'sometimes'
+                'status_id' => 'required'
             ]);
 
             $task = Task::create([
@@ -35,7 +36,7 @@
             return response($task, 200);
         }
 
-        public function update($board, $status, $id, Request $request)
+        public function update($id, Request $request)
         {
             $this->validate($request, [
                 'title' => 'sometimes',
@@ -58,7 +59,7 @@
          * @param $id
          * @return Response|\Laravel\Lumen\Http\ResponseFactory
          */
-        public function destroy($board, $status, $id)
+        public function destroy($id)
         {
             $task = Task::find($id);
             $task->delete();

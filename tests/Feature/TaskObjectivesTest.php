@@ -11,8 +11,9 @@
         function an_objective_can_be_added_to_a_task()
         {
             $objective = make('App\Objective', ['body' => 'new objective']);
+            $task = create('App\Task');
 
-            $this->json('post', $objective->task->path() . '/objectives', $objective->toArray())
+            $this->json('post', "api/tasks/{$task->id}/objectives", $objective->toArray())
                 ->assertResponseStatus(200);
 
             $this->seeInDatabase('objectives', ['body' => 'new objective']);

@@ -10,9 +10,10 @@
         /** @test */
         function a_user_can_fetch_tasks ()
         {
-            $task = create('App\Task');
+            $status = create('App\Status');
+            create('App\Task', ['status_id' => $status->id]);
 
-            $this->json('get', $task->status->path() . '/tasks')
+            $this->json('get', "api/statuses/$status->id/tasks")
                 ->assertResponseStatus(200);
         }
     }

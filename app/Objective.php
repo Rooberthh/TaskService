@@ -44,6 +44,6 @@
 
         public function path()
         {
-            return $this->task->path() . "/objectives/$this->id";
+            return  "api/tasks/{$this->task->id}/objectives/$this->id";
         }
     }

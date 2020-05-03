@@ -15,7 +15,7 @@
             $status = create('App\Status');
             $task = make('App\Task', ['status_id' => $status->id]);
 
-            $this->json('post', $status->path() . '/tasks', $task->toArray())
+            $this->json('post', "api/statuses/{$status->id}/tasks", $task->toArray())
                 ->assertResponseStatus(200);
 
             $this->seeInDatabase('tasks', $task->toArray());

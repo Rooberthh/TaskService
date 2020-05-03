@@ -16,10 +16,6 @@
             'archived' => 'boolean'
         ];
 
-        protected $with = [
-            'statuses'
-        ];
-
         protected static function boot()
         {
             parent::boot();

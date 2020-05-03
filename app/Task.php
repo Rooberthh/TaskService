@@ -50,6 +50,6 @@
 
         public function path()
         {
-            return $this->status->path() . "/tasks/{$this->id}";
+            return "/api/statuses/{$this->status->id}/tasks/{$this->id}";
         }
     }

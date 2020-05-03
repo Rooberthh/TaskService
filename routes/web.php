@@ -14,6 +14,7 @@
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('boards',  ['uses' => 'BoardsController@index']);
     $router->post('boards',  ['uses' => 'BoardsController@store']);
+    $router->get('boards/{id}',  ['uses' => 'BoardsController@show']);
     $router->patch('boards/{id}',  ['uses' => 'BoardsController@update']);
     $router->delete('boards/{id}',  ['uses' => 'BoardsController@destroy']);
 
@@ -22,13 +23,13 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->patch('boards/{board}/statuses/{id}',  ['uses' => 'StatusesController@update']);
     $router->delete('boards/{board}/statuses/{id}',  ['uses' => 'StatusesController@destroy']);
 
-    $router->get('boards/{board}/statuses/{status}/tasks',  ['uses' => 'TasksController@index']);
-    $router->post('boards/{board}/statuses/{status}/tasks',  ['uses' => 'TasksController@store']);
-    $router->patch('boards/{board}/statuses/{status}/tasks/{id}',  ['uses' => 'TasksController@update']);
-    $router->delete('boards/{board}/statuses/{status}/tasks/{id}',  ['uses' => 'TasksController@destroy']);
+    $router->get('statuses/{status}/tasks',  ['uses' => 'TasksController@index']);
+    $router->post('statuses/{status}/tasks',  ['uses' => 'TasksController@store']);
+    $router->patch('statuses/{status}/tasks/{id}',  ['uses' => 'TasksController@update']);
+    $router->delete('statuses/{status}/tasks/{id}',  ['uses' => 'TasksController@destroy']);
 
-    $router->get('boards/{board}/statuses/{status}/tasks/{task}/objectives',  ['uses' => 'TaskObjectivesController@index']);
-    $router->post('boards/{board}/statuses/{status}/tasks/{task}/objectives',  ['uses' => 'TaskObjectivesController@store']);
-    $router->patch('boards/{board}/statuses/{status}/tasks/{task}/objectives/{id}',  ['uses' => 'TaskObjectivesController@update']);
-    $router->delete('boards/{board}/statuses/{status}/tasks/{task}/objectives/{id}',  ['uses' => 'TaskObjectivesController@destroy']);
+    $router->get('tasks/{task}/objectives',  ['uses' => 'TaskObjectivesController@index']);
+    $router->post('tasks/{task}/objectives',  ['uses' => 'TaskObjectivesController@store']);
+    $router->patch('tasks/{task}/objectives/{id}',  ['uses' => 'TaskObjectivesController@update']);
+    $router->delete('tasks/{task}/objectives/{id}',  ['uses' => 'TaskObjectivesController@destroy']);
 });

@@ -18,10 +18,6 @@
             'board_id'
         ];
 
-        protected $with = [
-            'tasks'
-        ];
-
         protected static function boot()
         {
             parent::boot();

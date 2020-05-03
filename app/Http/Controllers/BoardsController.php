@@ -11,7 +11,14 @@
     {
         public function index()
         {
-            return Board::all();
+            return Board::with('statuses')->get();
+        }
+
+        public function show($id)
+        {
+            $board = Board::with('statuses.tasks.objectives')->findOrFail($id);
+
+            return response($board, 200);
         }
 
         /**

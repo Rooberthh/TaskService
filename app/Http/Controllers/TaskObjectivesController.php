@@ -23,7 +23,7 @@
          * @return Response|\Laravel\Lumen\Http\ResponseFactory
          * @throws \Illuminate\Validation\ValidationException
          */
-        public function store($board, $status, $task, Request $request)
+        public function store($task, Request $request)
         {
             $this->validate($request, [
                 'body' => 'required'
@@ -34,7 +34,7 @@
             return $task->addObjective($request->get('body'));
         }
 
-        public function update($board, $status, $task, $id, Request $request)
+        public function update($task, $id, Request $request)
         {
             $this->validate($request, [
                 'body' => 'required'
