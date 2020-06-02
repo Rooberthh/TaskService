@@ -11,7 +11,7 @@
     {
         public function index()
         {
-            return Task::all();
+            return Task::orderBy('order')->get();
         }
 
         /**
@@ -30,7 +30,7 @@
             $task = Task::create([
                 'title' => $request->get('title'),
                 'description' => $request->get('description'),
-                'status_id' => $request->get('status_id')
+                'status_id' => $request->get('status_id'),
             ]);
 
             return response($task, 200);
@@ -49,7 +49,8 @@
             $task->update([
                 'title' => $request->get('title'),
                 'description' => $request->get('description'),
-                'status_id' => $request->get('status_id')
+                'status_id' => $request->get('status_id'),
+                'order' => ($request->get('order')) ? $request->get('order') : $task->order
             ]);
 
             return response($task, 200);
@@ -66,5 +67,7 @@
 
             return response('Task have been deleted', 200);
         }
+
+
 
     }

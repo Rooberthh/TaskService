@@ -15,6 +15,7 @@
             $this->assertInstanceOf(Status::class, $task->status);
         }
 
+
         /** @test */
         function it_can_have_objectives()
         {

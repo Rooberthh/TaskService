@@ -17,7 +17,8 @@
         protected $fillable = [
             'title',
             'description',
-            'status_id'
+            'status_id',
+            'order'
         ];
 
         protected $with = [

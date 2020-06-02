@@ -21,6 +21,7 @@
         return [
             'title' => $faker->sentence,
             'description' => $faker->paragraph,
+            'order' => $faker->numberBetween(0, 10),
             'status_id' => function () {
                 return factory(Status::class)->create()->id;
             },
