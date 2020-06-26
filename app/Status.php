@@ -34,7 +34,7 @@
 
         public function tasks()
         {
-            return $this->hasMany(Task::class)->orderBy('order', 'asc');
+            return $this->hasMany(Task::class)->orderBy('order', 'asc')->orderBy('updated_at', 'desc');
         }
 
         public function path()

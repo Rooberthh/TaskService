@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Task;
+    use Carbon\Carbon;
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
     use Illuminate\Validation\Rule;
@@ -31,7 +32,7 @@
                 'title' => $request->get('title'),
                 'description' => $request->get('description'),
                 'status_id' => $request->get('status_id'),
-                'order' => ($request->get('order')) ? $request->get('order') : 0
+                'order' => ($request->get('order')) ? $request->get('order') : 1000
             ]);
 
             return response($task, 200);
@@ -46,13 +47,15 @@
             ]);
 
             $task = Task::find($id);
-
             $task->update([
                 'title' => $request->get('title'),
                 'description' => $request->get('description'),
                 'status_id' => $request->get('status_id'),
-                'order' => ($request->get('order')) ? $request->get('order') : $task->order
+                'order' => ($request->get('order')) ? $request->get('order') : $task->order,
             ]);
+
+            //Force update of updated_at
+            $task->touch();
 
             return response($task, 200);
         }
