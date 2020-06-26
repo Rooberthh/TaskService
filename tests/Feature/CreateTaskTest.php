@@ -22,20 +22,6 @@
         }
 
         /** @test */
-        function a_task_title_must_be_unique()
-        {
-            $status = create('App\Status');
-
-            create('App\Task', ['title' => 'created', 'status_id' => $status->id]);
-            $task = make('App\Task', ['title' => 'created', 'status_id' => $status->id]);
-
-            $response = $this->json('post', $task->status->path() . '/tasks', $task->toArray());
-
-            $this->assertEquals(422, $response->response->getStatusCode());
-            // $this->notSeeInDatabase('tasks', $task->toArray());
-        }
-
-        /** @test */
         function a_user_can_delete_a_task()
         {
             $task = create('App\Task');

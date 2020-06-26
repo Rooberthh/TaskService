@@ -31,6 +31,7 @@
                 'title' => $request->get('title'),
                 'description' => $request->get('description'),
                 'status_id' => $request->get('status_id'),
+                'order' => ($request->get('order')) ? $request->get('order') : 0
             ]);
 
             return response($task, 200);
