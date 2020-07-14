@@ -16,13 +16,12 @@
          */
         public function handle($request, Closure $next)
         {
-            $response = $next($request);
             if(app()->environment('production')) {
-                if ($response->headers->get('X-api-key') === null || $response->headers->get('X-api-key') !== config('api.key')) {
+                if ($request->headers->get('auth') === null || $request->headers->get('auth') !== config('api.key')) {
                     return new Response('Bad or no key', 403);
                 }
             }
 
-            return $response;
+            return $next($request);
         }
     }
