@@ -8,7 +8,6 @@
     {
         use DatabaseMigrations;
 
-
         /** @test
         function requests_is_checked_for_api_key_on_production()
         {

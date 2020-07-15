@@ -18,6 +18,7 @@ class CreateStatusesTable extends Migration
             $table->unsignedInteger('board_id');
             $table->string('name');
             $table->string('color')->default('#000000');
+            $table->unsignedInteger('order')->default(1000);
             $table->timestamps();
         });
     }

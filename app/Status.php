@@ -15,7 +15,8 @@
         protected $fillable = [
             'name',
             'color',
-            'board_id'
+            'board_id',
+            'order'
         ];
 
         protected static function boot()

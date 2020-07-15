@@ -17,4 +17,15 @@
 
             $this->assertEquals('is changed', $status->fresh()->name);
         }
+
+        /** @test */
+        function a_user_can_update_the_order_of_a_status()
+        {
+            $status = create('App\Status', ['order' => 100]);
+
+            $this->json('patch', $status->path(), ['order' => 1, 'name' => "hello", "color" => "#111222"])
+                ->assertResponseStatus(200);
+
+            $this->assertEquals(1, $status->fresh()->order);
+        }
     }

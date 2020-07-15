@@ -14,7 +14,7 @@
     {
         public function index()
         {
-            return Status::all();
+            return Status::orderBy('order')->get();
         }
 
         /**
@@ -33,7 +33,8 @@
             $status = Status::create([
                 'name' => $request->get('name'),
                 'color' => $request->get('color'),
-                'board_id' => $board
+                'board_id' => $board,
+                'order' => ($request->get('order')) ? $request->get('order') : 1000
             ]);
 
             return response($status, 200);
@@ -56,7 +57,8 @@
 
             $status->update([
                 'name' => $request->get('name'),
-                'color' => $request->get('color')
+                'color' => $request->get('color'),
+                'order' => ($request->get('order')) ? $request->get('order') : $status->order,
             ]);
 
             return response($status, 200);
