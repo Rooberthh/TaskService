@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use App\Status;
     use App\Task;
     use Carbon\Carbon;
     use Illuminate\Http\Request;
@@ -58,6 +59,21 @@
             $task->touch();
 
             return response($task, 200);
+        }
+
+        public function updateOrderAll($status, Request $request)
+        {
+            $tasks = Status::find($status)->tasks;
+            foreach ($tasks as $task) {
+                $id = $task->id;
+                foreach ($request->get('tasks') as $taskFrontEnd) {
+                    if ($taskFrontEnd['id'] == $id) {
+                        $task->update(['order' => $taskFrontEnd['order']]);
+                    }
+                }
+            }
+
+            return response('Updated order of tasks', 200);
         }
 
         /**
