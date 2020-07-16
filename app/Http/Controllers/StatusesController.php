@@ -61,6 +61,8 @@
                 'order' => ($request->get('order')) ? $request->get('order') : $status->order,
             ]);
 
+            $status->touch();
+
             return response($status, 200);
         }
 

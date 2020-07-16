@@ -26,7 +26,7 @@
         }
 
         public function statuses() {
-            return $this->hasMany(Status::class);
+            return $this->hasMany(Status::class)->orderBy('order')->orderBy('updated_at', 'desc');
         }
 
         public function path()
