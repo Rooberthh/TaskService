@@ -4,6 +4,7 @@
     namespace App\Http\Controllers;
 
 
+    use App\Board;
     use App\Status;
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
@@ -64,6 +65,23 @@
             $status->touch();
 
             return response($status, 200);
+        }
+
+        public function updateOrderAll($board, Request $request)
+        {
+            $statuses = Board::find($board)->statuses;
+
+            // Refactor
+            foreach ($statuses as $status) {
+                $id = $status->id;
+                foreach ($request->get('statuses') as $statusFrontEnd) {
+                    if ($statusFrontEnd['id'] == $id) {
+                        $status->update(['order' => $statusFrontEnd['order']]);
+                    }
+                }
+            }
+
+            return response('Updated order of statuses', 200);
         }
 
         public function destroy($board, $id)

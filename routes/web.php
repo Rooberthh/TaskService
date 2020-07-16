@@ -20,6 +20,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
     $router->get('boards/{board}/statuses',  ['uses' => 'StatusesController@index']);
     $router->post('boards/{board}/statuses',  ['uses' => 'StatusesController@store']);
+    $router->patch('boards/{board}/statuses',  ['uses' => 'StatusesController@updateOrderAll']);
     $router->patch('boards/{board}/statuses/{id}',  ['uses' => 'StatusesController@update']);
     $router->delete('boards/{board}/statuses/{id}',  ['uses' => 'StatusesController@destroy']);
 
