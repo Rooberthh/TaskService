@@ -35,7 +35,8 @@
                 'name' => $request->get('name'),
                 'color' => $request->get('color'),
                 'board_id' => $board,
-                'order' => ($request->get('order')) ? $request->get('order') : 1000
+                'order' => ($request->get('order')) ? $request->get('order') : 1000,
+                'favorite' => ($request->get('favorite')) ? $request->get('favorite') : false
             ]);
 
             return response($status, 200);
@@ -60,6 +61,7 @@
                 'name' => $request->get('name'),
                 'color' => $request->get('color'),
                 'order' => ($request->get('order')) ? $request->get('order') : $status->order,
+                'favorite' => ($request->get('favorite')) ? $request->get('favorite') : $status->favorite
             ]);
 
             $status->touch();

@@ -24,6 +24,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->patch('boards/{board}/statuses/{id}',  ['uses' => 'StatusesController@update']);
     $router->delete('boards/{board}/statuses/{id}',  ['uses' => 'StatusesController@destroy']);
 
+    $router->get('statuses/favorites',  ['uses' => 'FavoriteStatusesController@index']);
+    $router->post('statuses/{status}/favorite',  ['uses' => 'FavoriteStatusesController@store']);
+    $router->delete('statuses/{status}/favorite',  ['uses' => 'FavoriteStatusesController@destroy']);
+
     $router->get('statuses/{status}/tasks',  ['uses' => 'TasksController@index']);
     $router->post('statuses/{status}/tasks',  ['uses' => 'TasksController@store']);
     $router->patch('statuses/{status}/tasks',  ['uses' => 'TasksController@updateOrderAll']);

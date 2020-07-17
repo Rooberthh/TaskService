@@ -7,6 +7,7 @@
 
     class Status extends Model
     {
+        use Favoritable;
         /**
          * The attributes that are mass assignable.
          *
@@ -16,7 +17,12 @@
             'name',
             'color',
             'board_id',
-            'order'
+            'order',
+            'favorite'
+        ];
+
+        protected $casts = [
+            'favorite' => 'boolean'
         ];
 
         protected static function boot()
