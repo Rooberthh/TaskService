@@ -39,7 +39,7 @@
             return response($task, 200);
         }
 
-        public function update($id, Request $request)
+        public function update($status, $id, Request $request)
         {
             $this->validate($request, [
                 'title' => 'sometimes',
