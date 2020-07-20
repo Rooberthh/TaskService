@@ -5,7 +5,7 @@
     use Closure;
     use Illuminate\Http\Response;
 
-    class RequestAuth
+    class AuthenticateAccess
     {
         /**
          * Handle an incoming request.
@@ -16,12 +16,10 @@
          */
         public function handle($request, Closure $next)
         {
-            if(app()->environment('production')) {
-                if ($request->headers->get('auth') === null || $request->headers->get('auth') !== config('api.key')) {
-                    return new Response('Bad or no key', 403);
-                }
-            }
+            $validSecrets = explode(';', env('ACCEPTED_SECRETS'));
 
-            return $next($request);
+            if(in_array($request->header('Authorization'), $validSecrets)) {
+                return $next($request);
+            }
         }
     }
