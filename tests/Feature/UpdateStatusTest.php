@@ -28,13 +28,5 @@
 
             $this->assertEquals(1, $status->fresh()->order);
         }
-
-        /** @test */
-        function a_status_orders_can_be_updated()
-        {
-            $status = create('App\Status', ['order' => 100]);
-
-            $this->json('patch', $status->board->path(), $status->toArray())
-                ->assertResponseStatus(200);
-        }
+        
     }

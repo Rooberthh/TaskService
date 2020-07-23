@@ -10,6 +10,7 @@
         protected $fillable = [
             'name',
             'archived',
+            'user_id'
         ];
 
         protected $casts = [

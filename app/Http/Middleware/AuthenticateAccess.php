@@ -16,6 +16,10 @@
          */
         public function handle($request, Closure $next)
         {
+            if(!app()->environment('production')) {
+                return $next($request);
+            }
+
             $validSecrets = explode(';', env('ACCEPTED_SECRETS'));
 
             if(in_array($request->header('Authorization'), $validSecrets)) {

@@ -13,7 +13,7 @@
         {
             $board = create('App\Board');
 
-            $this->json('delete', $board->path())
+            $this->json('delete', $board->path(), ['user_id' => 1])
                 ->assertResponseStatus(200);
 
             $this->notSeeInDatabase('boards', $board->toArray());

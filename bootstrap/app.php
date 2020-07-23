@@ -63,10 +63,6 @@ $app->middleware([
      App\Http\Middleware\AuthenticateAccess::class
 ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
-
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
@@ -78,8 +74,8 @@ $app->middleware([
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+    $app->register(App\Providers\AppServiceProvider::class);
+    $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
 /*
