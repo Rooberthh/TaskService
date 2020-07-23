@@ -53,7 +53,7 @@
             $board = Board::find($id);
 
             //Refactor
-            if((int)$board->user_id !== $request->get('user_id')){
+            if((int)$board->user_id !== (int)$request->get('user_id')){
                 return response('You do not have access to update board', 403);
             }
 
@@ -72,13 +72,13 @@
         {
             $board = Board::find($id);
 
-            if((int)$board->user_id !== $request->get('user_id')){
+            if((int)$board->user_id !== (int)$request->get('user_id')){
                 return response('You do not have access to delete board', 403);
             }
 
             $board->delete();
 
-            return response('Task have been deleted', 200);
+            return response('Board have been deleted', 200);
         }
 
     }

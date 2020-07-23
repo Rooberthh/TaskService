@@ -28,5 +28,5 @@
 
             $this->assertEquals(1, $status->fresh()->order);
         }
-        
+
     }
